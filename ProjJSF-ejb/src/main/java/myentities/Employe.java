@@ -10,30 +10,47 @@ import javax.persistence.*;
 @Entity
 public class Employe implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String login;
 	private String password;
 	private String email;
-	//private Boolean isActif;
-	
+	private boolean editable;
+
+	// private Boolean isActif;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
+
 	public Employe(String login, String password, String email, Boolean isActif, Role role) {
 		super();
 		this.login = login;
 		this.password = password;
 		this.email = email;
-		//this.isActif = isActif;
+		// this.isActif = isActif;
 		this.role = role;
 	}
 
 	@Enumerated(EnumType.STRING)
-	//@NotNull
+	// @NotNull
 	private Role role;
-	
+
 	public Employe() {
 		super();
 	}
@@ -77,6 +94,5 @@ public class Employe implements Serializable {
 		this.email = email;
 		this.role = role;
 	}
-	
-   
+
 }

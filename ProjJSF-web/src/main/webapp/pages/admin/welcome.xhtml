@@ -52,33 +52,54 @@
 		</h:panelGroup>
 
 
-		<h:panelGroup columns="3">
+		<h:panelGroup columns="4">
 			<h:form>
 				<h:dataTable value="#{employeBean.employes}" var="employe"
 					border="1">
 
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="editable" />
+						</f:facet>
+						<h:outputText value="#{employe.editable}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="email" />
+						</f:facet>
+						<h:outputText value="#{employe.email}"
+							rendered="#{not employe.editable}" />
+						<h:inputText value="#{employe.email}"
+							rendered="#{employe.editable}" />
+					</h:column>
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="login" />
 						</f:facet>
-						<h:outputText value="#{employe.email}" />
+						<h:outputText value="#{employe.login}"
+							rendered="#{not employe.editable}" />
 					</h:column>
 
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Role" />
 						</f:facet>
-						<h:outputText value="#{employe.role}" />
+						<h:outputText value="#{employe.role}"
+							rendered="#{not employe.editable}" />
+						<h:inputText value="#{employe.role}"
+							rendered="#{employe.editable}" />
 					</h:column>
 
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Actions" />
 						</f:facet>
-						<h:commandLink value="Delete"
-							action="#{employeBean.deleteEmploye(employe)}" />
+						<h:commandButton action="#{employeBean.deleteEmploye(employe)}"
+							value="Delete" />
+						<h:commandLink rendered="#{not employe.editable}"
+							action="#{employeBean.initEdit(employe)}" value="Edit" />
 					</h:column>
-
 
 				</h:dataTable>
 			</h:form>

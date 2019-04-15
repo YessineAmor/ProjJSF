@@ -55,4 +55,8 @@ public class EmployeService implements EmployeServiceRemote {
 		em.remove(em.merge(e));
 	}
 
+	public void editEmploye(Employe e) {
+		em.merge(e);
+	}
+
 }

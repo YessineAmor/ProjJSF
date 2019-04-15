@@ -22,11 +22,20 @@ public class EmployeBean implements Serializable {
 	private String email;
 	private Boolean isActif;
 	private Role role;
+	private Employe selectedEmploye;
 	@EJB
 	EmployeService employeService;
 
 	public void addEmploye() {
 		employeService.ajouterEmploye(new Employe(login, password, email, isActif, role));
+	}
+
+	public Employe getSelectedEmploye() {
+		return selectedEmploye;
+	}
+
+	public void setSelectedEmploye(Employe selectedEmploye) {
+		this.selectedEmploye = selectedEmploye;
 	}
 
 	// getters & setters
@@ -91,6 +100,16 @@ public class EmployeBean implements Serializable {
 
 	public void deleteEmploye(Employe e) {
 		employeService.deleteEmploye(e);
+	}
+
+	public String initEdit(Employe e) {
+		this.selectedEmploye = e;
+		return "/pages/admin/editEmploye?faces-redirect=true";
+	}
+
+	public String editEmployee(Employe e) {
+		employeService.editEmploye(e);
+		return "/pages/admin/welcome?faces-redirect=true";
 	}
 
 }
