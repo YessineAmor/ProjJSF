@@ -1,0 +1,4 @@
+servicesimpl\EmployeService.class
+myentities\Employe.class
+servicesinterf\EmployeServiceRemote.class
+myentities\Role.class
