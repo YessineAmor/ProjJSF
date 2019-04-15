@@ -23,6 +23,7 @@ public class EmployeBean implements Serializable {
 	private Boolean isActif;
 	private Role role;
 	private Employe selectedEmploye;
+
 	@EJB
 	EmployeService employeService;
 
@@ -110,6 +111,10 @@ public class EmployeBean implements Serializable {
 	public String editEmployee(Employe e) {
 		employeService.editEmploye(e);
 		return "/pages/admin/welcome?faces-redirect=true";
+	}
+
+	public void editInSamePage(Employe e) {
+		this.selectedEmploye = e;
 	}
 
 }

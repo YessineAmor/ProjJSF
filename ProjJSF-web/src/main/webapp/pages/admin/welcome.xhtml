@@ -98,7 +98,10 @@
 						<h:commandButton action="#{employeBean.deleteEmploye(employe)}"
 							value="Delete" />
 						<h:commandLink rendered="#{not employe.editable}"
-							action="#{employeBean.initEdit(employe)}" value="Edit" />
+							action="#{employeBean.initEdit(employe)}"
+							value="Edit in another page " />
+						<h:commandLink action="#{employeBean.initEdit(employe)}"
+							value="Edit in this page" />
 					</h:column>
 
 				</h:dataTable>
